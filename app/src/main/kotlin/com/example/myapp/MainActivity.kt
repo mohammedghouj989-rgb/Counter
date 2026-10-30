@@ -15,6 +15,7 @@ class MainActivity : Activity() {
         val buttonIncrement = findViewById<Button>(R.id.buttonIncrement)
         val buttonneg = findViewById<Button>(R.id.buttonneg)
         val Reset = findViewById<Button>(R.id.Reset)
+        var Warn = "لا يمكنني طباعة قيم سالبة"
         
         buttonIncrement.setOnClickListener(){
             counter++
@@ -22,8 +23,12 @@ class MainActivity : Activity() {
         }
         
         buttonneg.setOnClickListener(){
-            counter--
-            tvCounter.text = counter.toString()
+            if (counter == 0){
+                tvCounter.text = Warn.toString()
+            }else{
+                counter--
+                tvCounter.text = counter.toString()
+            }
         }
         
         Reset.setOnClickListener(){
